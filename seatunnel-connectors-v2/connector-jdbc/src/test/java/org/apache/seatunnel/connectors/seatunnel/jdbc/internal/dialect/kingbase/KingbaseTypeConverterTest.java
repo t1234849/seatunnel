@@ -862,4 +862,46 @@ public class KingbaseTypeConverterTest {
                 KingbaseTypeConverter.PG_SMALLINT_ARRAY, typeDefine.getColumnType());
         Assertions.assertEquals(KingbaseTypeConverter.PG_SMALLINT_ARRAY, typeDefine.getDataType());
     }
+
+    @Test
+    public void testConvertKingBaseInt() {
+        BasicTypeDefine<Object> typeDefine =
+                BasicTypeDefine.builder()
+                        .name("test")
+                        .columnType(KingbaseTypeConverter.KB_INT)
+                        .dataType(KingbaseTypeConverter.KB_INT)
+                        .build();
+        Column column = KingbaseTypeConverter.INSTANCE.convert(typeDefine);
+        Assertions.assertEquals(typeDefine.getName(), column.getName());
+        Assertions.assertEquals(BasicType.INT_TYPE, column.getDataType());
+        Assertions.assertEquals(KingbaseTypeConverter.KB_INT, column.getSourceType().toUpperCase());
+    }
+
+    @Test
+    public void testConvertKingBaseSmallint() {
+        BasicTypeDefine<Object> typeDefine =
+                BasicTypeDefine.builder()
+                        .name("test")
+                        .columnType(KingbaseTypeConverter.KB_SMALLINT)
+                        .dataType(KingbaseTypeConverter.KB_SMALLINT)
+                        .build();
+        Column column = KingbaseTypeConverter.INSTANCE.convert(typeDefine);
+        Assertions.assertEquals(typeDefine.getName(), column.getName());
+        Assertions.assertEquals(BasicType.SHORT_TYPE, column.getDataType());
+        Assertions.assertEquals(KingbaseTypeConverter.KB_SMALLINT, column.getSourceType().toUpperCase());
+    }
+
+    @Test
+    public void testConvertKingBaseBigint() {
+        BasicTypeDefine<Object> typeDefine =
+                BasicTypeDefine.builder()
+                        .name("test")
+                        .columnType(KingbaseTypeConverter.KB_BIGINT)
+                        .dataType(KingbaseTypeConverter.KB_BIGINT)
+                        .build();
+        Column column = KingbaseTypeConverter.INSTANCE.convert(typeDefine);
+        Assertions.assertEquals(typeDefine.getName(), column.getName());
+        Assertions.assertEquals(BasicType.LONG_TYPE, column.getDataType());
+        Assertions.assertEquals(KingbaseTypeConverter.KB_BIGINT, column.getSourceType().toUpperCase());
+    }
 }
