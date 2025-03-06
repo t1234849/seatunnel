@@ -888,7 +888,8 @@ public class KingbaseTypeConverterTest {
         Column column = KingbaseTypeConverter.INSTANCE.convert(typeDefine);
         Assertions.assertEquals(typeDefine.getName(), column.getName());
         Assertions.assertEquals(BasicType.SHORT_TYPE, column.getDataType());
-        Assertions.assertEquals(KingbaseTypeConverter.KB_SMALLINT, column.getSourceType().toUpperCase());
+        Assertions.assertEquals(
+                KingbaseTypeConverter.KB_SMALLINT, column.getSourceType().toUpperCase());
     }
 
     @Test
@@ -902,6 +903,7 @@ public class KingbaseTypeConverterTest {
         Column column = KingbaseTypeConverter.INSTANCE.convert(typeDefine);
         Assertions.assertEquals(typeDefine.getName(), column.getName());
         Assertions.assertEquals(BasicType.LONG_TYPE, column.getDataType());
-        Assertions.assertEquals(KingbaseTypeConverter.KB_BIGINT, column.getSourceType().toUpperCase());
+        Assertions.assertEquals(
+                KingbaseTypeConverter.KB_BIGINT, column.getSourceType().toUpperCase());
     }
 }
